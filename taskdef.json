@@ -1,0 +1,83 @@
+{
+    "taskDefinition": "app-container-app-task",
+    "containerDefinitions": [
+        {
+            "name": "app-container",
+            "image": "127214169103.dkr.ecr.ap-south-1.amazonaws.com/codedeploy-ecr:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "containerPort": 3000,
+                    "hostPort": 3000,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/aws/ecs/app-service",
+                    "awslogs-region": "ap-south-1",
+                    "awslogs-stream-prefix": "app-container"
+                }
+            },
+            "systemControls": []
+        }
+    ],
+    "family": "app-container-app-task",
+    "taskRoleArn": "arn:aws:iam::127214169103:role/app-task-role",
+    "executionRoleArn": "arn:aws:iam::127214169103:role/app-task-execution-role",
+    "networkMode": "awsvpc",
+    "revision": 45,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "3072",
+    "registeredAt": "2025-05-12T19:42:43.284Z",
+    "registeredBy": "arn:aws:sts::127214169103:assumed-role/dev-codepipeline-service-role/1747078962852",
+    "tags": [
+        {
+            "key": "Terraform",
+            "value": "true"
+        },
+        {
+            "key": "Project",
+            "value": "codebuild-pipeline"
+        },
+        {
+            "key": "Environment",
+            "value": "dev"
+        }
+    ]
+}
