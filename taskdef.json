@@ -1,5 +1,5 @@
 {
-    "taskDefinition": "app-container-app-task",
+    "taskDefinition": "ec2-app-container-app-task",
     "containerDefinitions": [
         {
             "name": "app-container",
@@ -19,7 +19,7 @@
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/aws/ecs/app-service",
+                    "awslogs-group": "/aws/ecs/app-service-ec2",
                     "awslogs-region": "ap-south-1",
                     "awslogs-stream-prefix": "app-container"
                 }
@@ -27,11 +27,11 @@
             "systemControls": []
         }
     ],
-    "family": "app-container-app-task",
+    "family": "ec2-app-container-app-task",
     "taskRoleArn": "arn:aws:iam::127214169103:role/app-task-role",
     "executionRoleArn": "arn:aws:iam::127214169103:role/app-task-execution-role",
-    "networkMode": "awsvpc",
-    "revision": 45,
+    "networkMode": "bridge",
+    "revision": 1,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -60,7 +60,7 @@
         "FARGATE"
     ],
     "requiresCompatibilities": [
-        "FARGATE"
+        "EC2"
     ],
     "cpu": "1024",
     "memory": "3072",
